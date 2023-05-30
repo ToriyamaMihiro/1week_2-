@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour
 {
     private string playerTag = "Player";
+    public GameObject particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +18,19 @@ public class Goal : MonoBehaviour
     {
 
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    void SceneLoad()
     {
+        int nowSceneIndexNumber = SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadScene(++nowSceneIndexNumber);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject effect = Instantiate(particle) as GameObject;
+        effect.transform.position = transform.position;
         if (collision.collider.tag == playerTag)
         {
-            int nowSceneIndexNumber = SceneManager.GetActiveScene().buildIndex;
-
-            SceneManager.LoadScene(++nowSceneIndexNumber);
+            Invoke("SceneLoad", 1f);
         }
     }
 }

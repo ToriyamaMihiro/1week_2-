@@ -67,8 +67,6 @@ public class PlayerAction : MonoBehaviour
         {
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
 
-
-
         }
         /*---- à⁄ìÆêßå¿ ----*/
         Vector3 player_pos = transform.position;
