@@ -21,12 +21,12 @@ public class BoxHit : MonoBehaviour
     }
     void Update()
     {
-        if (!IsHitToEnemy())
+        if (!IsHitToFloor())
         {
             box.transform.Translate(0, -0.01f,0 );
         }
     }
-    bool IsHitToEnemy()
+    bool IsHitToFloor()
     {
         // collider2d‚ÆÕ“Ë‚µ‚Ä‚¢‚écollider‚Ì”‚ª•Ô‚Á‚Ä‚­‚é
         int hitCount = collider2d.OverlapCollider(new ContactFilter2D(), results);

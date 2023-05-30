@@ -26,13 +26,15 @@ public class PlayerAction : MonoBehaviour
     bool isHit = false;
     bool isJump = false;
     int particleTime = 0;
-    int particleCoolTime = 60;
+    int particleCoolTime = 10;
     private Rigidbody2D rb = null;
+
 
     // Start is called before the first frame update
     void Start()
     {
         /*---- 初期化 ----*/
+        Application.targetFrameRate = 60;//frameレートの固定
         this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 
@@ -46,8 +48,7 @@ public class PlayerAction : MonoBehaviour
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(-10, 0);
             if (particleTime % particleCoolTime == 0)
             {
-                Instantiate(particlePrefab, transform.position, Quaternion.identity);
-                Instantiate(particlePrefab, transform.position, Quaternion.identity);
+
             }
             isRight = false;
             isLeft = true;
@@ -57,35 +58,27 @@ public class PlayerAction : MonoBehaviour
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(10, 0);
             if (particleTime % particleCoolTime == 0)
             {
-                Instantiate(particlePrefab, transform.position, Quaternion.identity);
-                Instantiate(particlePrefab, transform.position, Quaternion.identity);
+
             }
             isRight = true;
             isLeft = false;
         }
+        /*---- ジャンプ ----*/
         if (Input.GetKeyDown(KeyCode.Space) && isJump)
         {
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
 
         }
-        /*---- 移動制限 ----*/
-        Vector3 player_pos = transform.position;
-        player_pos.x = Mathf.Clamp(player_pos.x, -xLimit, xLimit);
-        player_pos.y = Mathf.Clamp(player_pos.y, -yLimit, yLimit);
-        transform.position = new Vector2(player_pos.x, player_pos.y);
 
-        /*---- 移動制限 ----*/
+        /*---- リセット ----*/
         if (Input.GetKey(KeyCode.R))
         {
-            SceneManager.LoadScene(1);
+            int nowSceneIndexNumber = SceneManager.GetActiveScene().buildIndex;//今のシーン
+            SceneManager.LoadScene(nowSceneIndexNumber);
         }
     }
-    /*---- ジャンプ ----*/
-    //トリガーと他のオブジェクトが接触
-    //床との接触
 
-
-    //トリガーと他のオブジェクトが離れた
+    /*---- 床との判定 ----*/
     private void OnCollisionExit2D(Collision2D floor)
     {
 
@@ -109,24 +102,28 @@ public class PlayerAction : MonoBehaviour
         if (collision.collider.tag == boxTag)
         {
             isJump = true;
-            //ボックスの移動
-            if (Input.GetKey(KeyCode.Z))
+            /*---- ボックスとプレイヤーの処理 ----*/
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 if (Power >= 1)
                 {
                     if (isLeft)
                     {
+                        Instantiate(particlePrefab, new Vector3(collision.transform.position.x, collision.transform.position.y - 1, 0), Quaternion.identity);
+                        Instantiate(particlePrefab, new Vector3(collision.transform.position.x, collision.transform.position.y - 1, 0), Quaternion.identity);
                         collision.transform.Translate(-2, 0, 0);
                     }
                     else if (isRight)
                     {
+                        Instantiate(particlePrefab, new Vector3(collision.transform.position.x, collision.transform.position.y - 1, 0), Quaternion.identity);
+                        Instantiate(particlePrefab, new Vector3(collision.transform.position.x, collision.transform.position.y - 1, 0), Quaternion.identity);
                         collision.transform.Translate(2, 0, 0);
                     }
                 }
                 Power -= 1;
             }
             //ボックスの破壊
-            if (Input.GetKey(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.X))
             {
                 if (Power >= 2)
                 {
