@@ -87,20 +87,14 @@ public class PlayerAction : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(-10, 0);
-            if (particleTime % particleCoolTime == 0)
-            {
-
-            }
+            this.GetComponent<SpriteRenderer>().flipX = true;
             isRight = false;
             isLeft = true;
         }
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(10, 0);
-            if (particleTime % particleCoolTime == 0)
-            {
-
-            }
+            this.GetComponent<SpriteRenderer>().flipX = false;
             isRight = true;
             isLeft = false;
         }
