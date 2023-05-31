@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6160951630030137858, guid: 9382f6fc48012bd43910a0ed92d1e4a6, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6160951630030137859, guid: 9382f6fc48012bd43910a0ed92d1e4a6, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -784,6 +788,30 @@ PrefabInstance:
     - target: {fileID: 2082484052358821108, guid: 48d1b5404a18cff46a6dbc012e8a016d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082484052358821109, guid: 48d1b5404a18cff46a6dbc012e8a016d, type: 3}
+      propertyPath: denti1
+      value: 
+      objectReference: {fileID: 4005469841312849274, guid: 648cadf510dfbc940850478d63480153, type: 3}
+    - target: {fileID: 2082484052358821109, guid: 48d1b5404a18cff46a6dbc012e8a016d, type: 3}
+      propertyPath: denti2
+      value: 
+      objectReference: {fileID: 4005469841312849274, guid: 648cadf510dfbc940850478d63480153, type: 3}
+    - target: {fileID: 2082484052358821109, guid: 48d1b5404a18cff46a6dbc012e8a016d, type: 3}
+      propertyPath: denti3
+      value: 
+      objectReference: {fileID: 4005469841312849274, guid: 648cadf510dfbc940850478d63480153, type: 3}
+    - target: {fileID: 2082484052358821109, guid: 48d1b5404a18cff46a6dbc012e8a016d, type: 3}
+      propertyPath: denti4
+      value: 
+      objectReference: {fileID: 4005469841312849274, guid: 648cadf510dfbc940850478d63480153, type: 3}
+    - target: {fileID: 2082484052358821109, guid: 48d1b5404a18cff46a6dbc012e8a016d, type: 3}
+      propertyPath: jumpPower
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082484052358821109, guid: 48d1b5404a18cff46a6dbc012e8a016d, type: 3}
+      propertyPath: dentiPoint
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48d1b5404a18cff46a6dbc012e8a016d, type: 3}

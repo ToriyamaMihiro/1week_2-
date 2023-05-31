@@ -25,5 +25,6 @@ public class ParticleAction : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
         transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), defaultScale, leftLifeTime / lifeTime);
         if (leftLifeTime <= 0) { Destroy(gameObject); }
+
     }
 }
